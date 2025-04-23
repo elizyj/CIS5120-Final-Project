@@ -1,86 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clothing Feed</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      overflow: hidden;
-    }
-    .feed-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .post-card {
-      position: absolute;
-      width: 80vw;
-      max-width: 400px;
-      height: 80vh;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      touch-action: pan-y;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .post-card img {
-      width: 100%;
-      border-radius: 12px;
-      height: auto;
-    }
-    .recommend-button {
-      position: absolute;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0.75rem 1.5rem;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1rem;
-      z-index: 10;
-    }
-    .menu-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      background-color: #fff;
-      padding: 0.75rem 0;
-      border-top: 1px solid #ddd;
-    }
-    .menu-bar button {
-      background: none;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ThriftTag - Daily Feed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="feed-container" id="feed">
-    <div class="post-card" data-index="0">
-      <img src="https://via.placeholder.com/400x400?text=Clothing+1" alt="Clothing 1">
+  <header class="app-header">
+    <div class="logo">
+      <img src="./IMG_5908.jpeg" alt="ThriftTag Logo" class="logo-image" />
+      <span class="logo-text">ThriftTag</span>
     </div>
-    <div class="post-card" data-index="1">
-      <img src="https://via.placeholder.com/400x400?text=Clothing+2" alt="Clothing 2">
+  </header>
+
+  <h1 class="feed-title">Daily Feed</h1>
+
+  <div class="carousel-container">
+    <div class="post-viewer" id="postViewer">
+      <div class="post-card active">
+        <img src="thrift1.jpg" alt="Clothing 1" />
+        <div class="like-buttons">
+            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+            <button class="btn-like" onclick="rate('like')">👍</button>
+          </div>
+      </div>
+      <div class="post-card">
+        <img src="thrift2.jpg" alt="Clothing 2" />
+        <div class="like-buttons">
+            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+            <button class="btn-like" onclick="rate('like')">👍</button>
+          </div>
+      </div>
+      <div class="post-card">
+        <img src="thrift3.jpg" alt="Clothing 3" />
+        <div class="like-buttons">
+            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+            <button class="btn-like" onclick="rate('like')">👍</button>
+          </div>
+      </div>
+      <div class="post-card">
+        <img src="thrift4.jpg" alt="Clothing 4" />
+        <div class="like-buttons">
+            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+            <button class="btn-like" onclick="rate('like')">👍</button>
+          </div>
+      </div>
+      <div class="post-card">
+        <img src="thrift5.jpg" alt="Clothing 5" />
+        <div class="like-buttons">
+            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+            <button class="btn-like" onclick="rate('like')">👍</button>
+          </div>
+      </div>
     </div>
   </div>
 
@@ -94,41 +67,33 @@
   </div>
 
   <script>
-    const likedPosts = [];
-    const dislikedPosts = [];
-
     function navigate(destination) {
       alert(`Navigating to ${destination} page...`);
     }
 
+    let currentIndex = 0;
     const cards = document.querySelectorAll('.post-card');
-    let startX = 0;
-    let currentCard = cards.length - 1;
+    const liked = [];
+    const disliked = [];
 
-    cards.forEach(card => {
-      card.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
+    function showCard(index) {
+      cards.forEach((card, i) => {
+        card.classList.remove('active');
+        if (i === index) card.classList.add('active');
       });
+    }
 
-      card.addEventListener('touchend', (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const diffX = endX - startX;
-
-        if (Math.abs(diffX) > 50) {
-          const index = parseInt(card.dataset.index);
-          if (diffX > 0) {
-            likedPosts.push(index);
-            alert(`Liked clothing ${index + 1}`);
-          } else {
-            dislikedPosts.push(index);
-            alert(`Disliked clothing ${index + 1}`);
-          }
-          card.style.opacity = 0;
-          card.style.transform = `translateX(${diffX > 0 ? 500 : -500}px)`;
-          currentCard--;
-        }
-      });
-    });
+    function rate(action) {
+      const imageAlt = cards[currentIndex].querySelector("img").alt;
+      if (action === "like") liked.push(imageAlt);
+      else disliked.push(imageAlt);
+      currentIndex++;
+      if (currentIndex < cards.length) {
+        showCard(currentIndex);
+      } else {
+        alert(`You're done!\nLiked: ${liked.join(", ")}\nDisliked: ${disliked.join(", ")}`);
+      }
+    }
   </script>
 </body>
 </html>
