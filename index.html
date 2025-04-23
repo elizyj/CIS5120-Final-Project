@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothing Feed</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      overflow: hidden;
+    }
+    .feed-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .post-card {
+      position: absolute;
+      width: 80vw;
+      max-width: 400px;
+      height: 80vh;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      touch-action: pan-y;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .post-card img {
+      width: 100%;
+      border-radius: 12px;
+      height: auto;
+    }
+    .recommend-button {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.75rem 1.5rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      z-index: 10;
+    }
+    .menu-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background-color: #fff;
+      padding: 0.75rem 0;
+      border-top: 1px solid #ddd;
+    }
+    .menu-bar button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="feed-container" id="feed">
+    <div class="post-card" data-index="0">
+      <img src="https://via.placeholder.com/400x400?text=Clothing+1" alt="Clothing 1">
+    </div>
+    <div class="post-card" data-index="1">
+      <img src="https://via.placeholder.com/400x400?text=Clothing+2" alt="Clothing 2">
+    </div>
+  </div>
+
+  <button class="recommend-button">Get Recommendations</button>
+
+  <div class="menu-bar">
+    <button onclick="navigate('home')">Home</button>
+    <button onclick="navigate('liked')">Liked</button>
+    <button onclick="navigate('disliked')">Disliked</button>
+    <button onclick="navigate('profile')">Profile</button>
+  </div>
+
+  <script>
+    const likedPosts = [];
+    const dislikedPosts = [];
+
+    function navigate(destination) {
+      alert(`Navigating to ${destination} page...`);
+    }
+
+    const cards = document.querySelectorAll('.post-card');
+    let startX = 0;
+    let currentCard = cards.length - 1;
+
+    cards.forEach(card => {
+      card.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      });
+
+      card.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const diffX = endX - startX;
+
+        if (Math.abs(diffX) > 50) {
+          const index = parseInt(card.dataset.index);
+          if (diffX > 0) {
+            likedPosts.push(index);
+            alert(`Liked clothing ${index + 1}`);
+          } else {
+            dislikedPosts.push(index);
+            alert(`Disliked clothing ${index + 1}`);
+          }
+          card.style.opacity = 0;
+          card.style.transform = `translateX(${diffX > 0 ? 500 : -500}px)`;
+          currentCard--;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
