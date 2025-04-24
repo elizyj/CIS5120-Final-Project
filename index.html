@@ -20,43 +20,7 @@
   <h1 class="feed-title">Daily Feed</h1>
 
   <div class="carousel-container">
-    <div class="post-viewer" id="postViewer">
-      <div class="post-card active">
-        <img src="thrift1.jpg" alt="Clothing 1" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-      <div class="post-card">
-        <img src="thrift2.jpg" alt="Clothing 2" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-      <div class="post-card">
-        <img src="thrift3.jpg" alt="Clothing 3" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-      <div class="post-card">
-        <img src="thrift4.jpg" alt="Clothing 4" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-      <div class="post-card">
-        <img src="thrift5.jpg" alt="Clothing 5" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-    </div>
+    <div class="post-viewer" id="postViewer"></div>
   </div>
 
   <button class="recommend-button">Get Recommendations!</button>
@@ -82,6 +46,24 @@
   </nav>
 
   <script>
+    const postViewer = document.getElementById("postViewer");
+
+    // Dynamically add 31 post cards
+    for (let i = 1; i <= 31; i++) {
+      const card = document.createElement("div");
+      card.classList.add("post-card");
+      if (i === 1) card.classList.add("active");
+
+      card.innerHTML = `
+        <img src="thrift${i}.jpg" alt="Clothing ${i}" />
+        <div class="like-buttons">
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
+      `;
+      postViewer.appendChild(card);
+    }
+
     const cards = document.querySelectorAll('.post-card');
     let currentIndex = parseInt(localStorage.getItem("postIndex")) || 0;
 
@@ -101,7 +83,7 @@
       let liked = JSON.parse(localStorage.getItem("likedImages")) || [];
       let disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
 
-      // Remove from both lists first to prevent duplicates
+      // Remove from both arrays to prevent duplicates
       liked = liked.filter(img => img.src !== imageSrc);
       disliked = disliked.filter(img => img.src !== imageSrc);
 
