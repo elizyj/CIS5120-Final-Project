@@ -1,5 +1,6 @@
 /* General Layout */
 body {
+<<<<<<< HEAD
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background-color: #f9f9f9;
@@ -93,6 +94,107 @@ body {
 }
 
 .btn-like,
+=======
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+  }
+  
+  /* Header */
+  .app-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+  }
+  .menu-bar i {
+    font-size: 1.8rem;
+    color: #587ddb;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #587ddb;
+  }
+  
+  /* Feed Title */
+  .feed-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #f8fa90;
+    margin: 1rem 0 0.25rem;
+    background: #587ddb; /* blue background */
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #587ddb;
+  }
+  
+  /* Post Carousel */
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.3rem 0;
+  }
+  
+  .post-viewer {
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  .post-card {
+    display: none;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    width: 100%;
+    height: 650px; /* uniform card height */
+    box-sizing: border-box;
+  }
+  
+  .post-card.active {
+    display: flex;
+  }
+  
+  .post-card img {
+    width: 100% !important;
+    height: 550px !important;
+    min-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  /* Like/Dislike Buttons with Emojis */
+  .like-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .btn-like,
+>>>>>>> d6566a3cdb3017ca374bbebcc7c4123c933df19a
 .btn-dislike {
   flex: 1;
   font-size: 3.5rem;
@@ -103,6 +205,7 @@ body {
   border-radius: 10px;
   transition: background 0.2s ease;
 }
+<<<<<<< HEAD
 
 .btn-like:hover {
   background-color: #e6f4ea;
@@ -242,3 +345,102 @@ body {
   overflow-y: auto;
   width: 100%;
 }
+=======
+  
+  .btn-like:hover {
+    background-color: #e6f4ea;
+  }
+  
+  .btn-dislike:hover {
+    background-color: #fce8e6;
+  }
+  
+  /* Recommend Button */
+  .recommend-button {
+    display: block;
+    margin: 0 auto 5.2rem;
+    padding: 0.5rem 1rem; /* more in line with other buttons */
+    background-color: #587ddb;
+    color: #f8fa90;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    min-width: 405px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif; /* explicitly match */
+    font-weight: 400; /* match regular text weight */
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: white;
+    margin: 15% auto;
+    padding: 2rem;
+    color: #587ddb;
+    border: 1px solid #ccc;
+    width: 50%;
+    max-width: 400px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+  }
+  .store-info-box {
+    background-color: #587ddb; /* blue */
+    color: #f8fa90; /* yellow text */
+    padding: 1rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+  }
+  
+  .store-info-box p {
+    margin: 0.5rem 0;
+  }
+  .close {
+    position: absolute;
+    top: 5px;      /* move it upward */
+    right: 16px;    /* move it rightward */
+    color: #8e1600;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .close:hover {
+    color: black;
+  }
+  /* Fixed Bottom Menu Bar */
+  .menu-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    padding: 0.75rem 0;
+    z-index: 999;
+  }
+  
+  .menu-bar button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+>>>>>>> d6566a3cdb3017ca374bbebcc7c4123c933df19a

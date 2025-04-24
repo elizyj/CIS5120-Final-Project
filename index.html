@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header class="app-header">
@@ -58,6 +59,28 @@
     </div>
   </div>
 
+  <button class="recommend-button">Get Recommendations!</button>
+  <div id="recommendationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Recommended Store!</h2>
+  
+      <div class="store-info-box">
+        <p><strong>Buffalo Exchange</strong></p>
+        <p>2.7 mi · 501 South St</p>
+        <p>(207) 780-7043</p>
+        <p>Open · Closes 8PM</p>
+      </div>
+  
+    </div>
+  </div>
+  <div class="menu-bar">
+    <button onclick="navigate('home')"><i class="fas fa-house"></i></button>
+  <button onclick="navigate('liked')"><i class="fas fa-thumbs-up"></i></button>
+  <button onclick="navigate('disliked')"><i class="fas fa-thumbs-down"></i></button>
+  <button onclick="navigate('profile')"><i class="fas fa-user"></i></button>
+  </div>
+
   <button class="recommend-button">Get Recommendations</button>
 
   <nav class="bottom-nav">
@@ -87,6 +110,30 @@ function showCard(index) {
 }
 
     function rate(action) {
+      const imageAlt = cards[currentIndex].querySelector("img").alt;
+      if (action === "like") liked.push(imageAlt);
+      else disliked.push(imageAlt);
+      currentIndex++;
+      if (currentIndex < cards.length) {
+        showCard(currentIndex);
+      } else {
+        alert(`You're done!\nLiked: ${liked.join(", ")}\nDisliked: ${disliked.join(", ")}`);
+      }
+    }
+    document.querySelector(".recommend-button").addEventListener("click", function () {
+  document.getElementById("recommendationModal").style.display = "block";
+});
+
+function closeModal() {
+  document.getElementById("recommendationModal").style.display = "none";
+}
+
+window.onclick = function (event) {
+  const modal = document.getElementById("recommendationModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
   const card = cards[currentIndex];
   const image = card.querySelector("img");
   const imageSrc = image.getAttribute("src");
