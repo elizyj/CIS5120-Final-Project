@@ -1,0 +1,133 @@
+
+.profile-scroll-box {
+  width: 80%;
+  max-width: 400px;
+  padding: 0.5rem;
+  margin: 0 auto 60px; /* extra space for bottom nav */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 100px; /* prevent overlap with bottom nav */
+}
+.add-post-btn {
+  position: fixed;
+  bottom: 90px; /* just above the nav */
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #587ddb; /* blue */
+  color: #f8fa90; /* yellow */
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.add-post-btn:hover {
+  background-color: #4266c2;
+}
+
+.post-entry {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-entry img {
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.likes {
+  font-size: 1.6rem;            /* Make emoji larger */
+  color: #587ddb;               /* Make like count blue */
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+}
+
+.feed-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #f8fa90;           /* yellow text */
+  background-color: #587ddb; /* blue background */
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #587ddb;
+  margin: 1rem auto 1.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 0.75rem 0;
+  z-index: 999;
+}
+
+.bottom-nav .nav-item {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.bottom-nav .nav-item.active {
+  color: #587ddb;
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #587ddb;
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

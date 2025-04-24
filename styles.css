@@ -119,10 +119,7 @@ body {
      background-color: white;
      border-bottom: 1px solid #ddd;
    }
-   .menu-bar i {
-     font-size: 1.8rem;
-     color: #587ddb;
-   }
+
    .logo {
      display: flex;
      align-items: center;
@@ -242,6 +239,7 @@ body {
    border-top: 1px solid #ddd;
    padding: 0.75rem 0;
    z-index: 999;
+   font-size: 2rem;
   }
   
   
@@ -441,10 +439,24 @@ body {
      padding: 0.75rem 0;
      z-index: 999;
    }
-    .menu-bar button {
-     background: none;
+   .menu-bar button,
+   .bottom-nav .nav-item {
+     background-color: #587ddb; /* blue */
+     color: white;
      border: none;
+     padding: 0.5rem 1rem;
+     border-radius: 10px;
      font-size: 1rem;
      cursor: pointer;
      font-family: 'Poppins', sans-serif;
+     text-decoration: none;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     transition: background-color 0.3s ease, color 0.3s ease;
    }
+   .menu-bar .active,
+.bottom-nav .nav-item.active {
+  background-color: #f8fa90; /* yellow */
+  color: #587ddb !important; /* blue text on yellow background */
+}

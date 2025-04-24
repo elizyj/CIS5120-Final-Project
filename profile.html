@@ -1,55 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Profile</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ThriftTag - My Posts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="profiles.css" />
 </head>
 <body>
-    <div class="profile-container">
-        <h1 class="profile-title">My Profile</h1>
-        
-        <div class="profile-header">
-            <div class="profile-photo">
-                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Photo">
-            </div>
-        </div>
-
-        <div class="photo-grid">
-            <!-- 4x5 grid of photos -->
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=1" alt="Photo 1"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=2" alt="Photo 2"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=3" alt="Photo 3"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=4" alt="Photo 4"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=5" alt="Photo 5"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=6" alt="Photo 6"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=7" alt="Photo 7"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=8" alt="Photo 8"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=9" alt="Photo 9"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=10" alt="Photo 10"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=11" alt="Photo 11"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=12" alt="Photo 12"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=13" alt="Photo 13"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=14" alt="Photo 14"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=15" alt="Photo 15"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=16" alt="Photo 16"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=17" alt="Photo 17"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=18" alt="Photo 18"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=19" alt="Photo 19"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=20" alt="Photo 20"></div>
-        </div>
-
-        <nav class="bottom-nav">
-            <a href="index.html" class="nav-item"><i class="ri-home-5-fill"></i></a>
-            <a href="liked.html" class="nav-item"><i class="ri-thumb-up-fill"></i></a>
-            <a href="disliked.html" class="nav-item"><i class="ri-thumb-down-fill"></i></a>
-            <a href="profile.html" class="nav-item active"><i class="ri-user-3-fill"></i></a>
-        </nav>
+  <header class="app-header">
+    <div class="logo">
+      <img src="./IMG_5908.jpeg" alt="ThriftTag Logo" class="logo-image" />
+      <span class="logo-text">ThriftTag</span>
     </div>
+  </header>
+
+  <h1 class="feed-title">My Posts</h1>
+
+  <div class="profile-scroll-box">
+    <div class="post-entry">
+      <img src="selfie2.png" alt="Selfie 1">
+      <div class="likes">👍 24</div>
+    </div>
+    <div class="post-entry">
+      <img src="selfie1.png" alt="Selfie 2">
+      <div class="likes">👍 18</div>
+    </div>
+    <div class="post-entry">
+      <img src="selfie3.png" alt="Selfie 3">
+      <div class="likes">👍 42</div>
+    </div>
+    <div class="post-entry">
+      <img src="selfie4.png" alt="Selfie 4">
+      <div class="likes">👍 31</div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="./index.html" class="nav-item"><i class="ri-home-5-fill"></i></a>
+    <a href="./liked.html" class="nav-item"><i class="ri-thumb-up-fill"></i></a>
+    <a href="./disliked.html" class="nav-item"><i class="ri-thumb-down-fill"></i></a>
+    <a href="./profile.html" class="nav-item active"><i class="ri-user-3-fill"></i></a>
+  </nav>
+  <button class="add-post-btn">+</button>
 </body>
-</html> 
+</html>
