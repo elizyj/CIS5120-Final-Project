@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ThriftTag - Daily Feed</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -59,41 +60,63 @@
 
   <button class="recommend-button">Get Recommendations</button>
 
-  <div class="menu-bar">
-    <button onclick="navigate('home')">Home</button>
-    <button onclick="navigate('liked')">Liked</button>
-    <button onclick="navigate('disliked')">Disliked</button>
-    <button onclick="navigate('profile')">Profile</button>
-  </div>
-
+  <nav class="bottom-nav">
+    <a href="./index.html" class="nav-item active"><i class="ri-home-5-fill"></i></a>
+    <a href="./liked.html" class="nav-item"><i class="ri-thumb-up-fill"></i></a>
+    <a href="./disliked.html" class="nav-item"><i class="ri-thumb-down-fill"></i></a>
+    <a href="./profile.html" class="nav-item"><i class="ri-user-3-fill"></i></a>
+  </nav>
+  
   <script>
     function navigate(destination) {
       alert(`Navigating to ${destination} page...`);
     }
 
-    let currentIndex = 0;
+    // let currentIndex = 0;
     const cards = document.querySelectorAll('.post-card');
     const liked = [];
     const disliked = [];
 
-    function showCard(index) {
-      cards.forEach((card, i) => {
-        card.classList.remove('active');
-        if (i === index) card.classList.add('active');
-      });
-    }
+    let currentIndex = parseInt(localStorage.getItem("postIndex")) || 0;
+
+function showCard(index) {
+  cards.forEach((card, i) => {
+    card.classList.remove("active");
+    if (i === index) card.classList.add("active");
+  });
+}
 
     function rate(action) {
-      const imageAlt = cards[currentIndex].querySelector("img").alt;
-      if (action === "like") liked.push(imageAlt);
-      else disliked.push(imageAlt);
-      currentIndex++;
-      if (currentIndex < cards.length) {
-        showCard(currentIndex);
-      } else {
-        alert(`You're done!\nLiked: ${liked.join(", ")}\nDisliked: ${disliked.join(", ")}`);
-      }
-    }
+  const card = cards[currentIndex];
+  const image = card.querySelector("img");
+  const imageSrc = image.getAttribute("src");
+  const imageAlt = image.getAttribute("alt");
+
+  const liked = JSON.parse(localStorage.getItem("likedImages")) || [];
+  const disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
+
+  if (action === "like") {
+    liked.push({ src: imageSrc, alt: imageAlt });
+    localStorage.setItem("likedImages", JSON.stringify(liked));
+  } else {
+    disliked.push({ src: imageSrc, alt: imageAlt });
+    localStorage.setItem("dislikedImages", JSON.stringify(disliked));
+  }
+
+  currentIndex++;
+  localStorage.setItem("postIndex", currentIndex); // ✅ Save the index
+
+  if (currentIndex < cards.length) {
+    showCard(currentIndex);
+  } else {
+    alert("You're done! View your liked/disliked items via the menu.");
+localStorage.setItem("postIndex", 0); // ✅ Reset to first post
+currentIndex = 0;
+showCard(currentIndex);
+  }
+}
+showCard(currentIndex);
   </script>
+
 </body>
 </html>

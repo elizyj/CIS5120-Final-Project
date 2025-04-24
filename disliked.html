@@ -1,41 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Disliked Images</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disliked Images</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="profile-container">
-        <h1 class="profile-title">Disliked Images</h1>
-        
-        <div class="photo-grid disliked-grid">
-            <!-- 4x3 grid of photos -->
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=21" alt="Disliked Photo 1"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=22" alt="Disliked Photo 2"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=23" alt="Disliked Photo 3"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=24" alt="Disliked Photo 4"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=25" alt="Disliked Photo 5"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=26" alt="Disliked Photo 6"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=27" alt="Disliked Photo 7"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=28" alt="Disliked Photo 8"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=29" alt="Disliked Photo 9"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=30" alt="Disliked Photo 10"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=31" alt="Disliked Photo 11"></div>
-            <div class="grid-item"><img src="https://picsum.photos/200/200?random=32" alt="Disliked Photo 12"></div>
-        </div>
-
-        <nav class="bottom-nav">
-            <a href="./index.html" class="nav-item"><i class="ri-home-5-fill"></i></a>
-            <a href="./liked.html" class="nav-item"><i class="ri-thumb-up-fill"></i></a>
-            <a href="./disliked.html" class="nav-item active"><i class="ri-thumb-down-fill"></i></a>
-            <a href="./profile.html" class="nav-item"><i class="ri-user-3-fill"></i></a>
-        </nav>
+  <header class="app-header">
+    <div class="logo">
+      <img src="./IMG_5908.jpeg" alt="ThriftTag Logo" class="logo-image" />
+      <span class="logo-text">ThriftTag</span>
     </div>
+  </header>
+
+  <h1 class="feed-title">Disliked Images</h1>
+
+  <div class="centered-content-box">
+    <div class="scrollable-grid">
+      <div class="disliked-grid"></div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="./index.html" class="nav-item"><i class="ri-home-5-fill"></i></a>
+    <a href="./liked.html" class="nav-item"><i class="ri-thumb-up-fill"></i></a>
+    <a href="./disliked.html" class="nav-item active"><i class="ri-thumb-down-fill"></i></a>
+    <a href="./profile.html" class="nav-item"><i class="ri-user-3-fill"></i></a>
+  </nav>
+
+  <script>
+    const dislikedGrid = document.querySelector('.disliked-grid');
+
+    function renderDislikedImages() {
+      dislikedGrid.innerHTML = "";
+      const dislikedImages = JSON.parse(localStorage.getItem("dislikedImages")) || [];
+
+      dislikedImages.forEach((imgData, index) => {
+        const div = document.createElement('div');
+        div.classList.add('grid-item');
+        div.innerHTML = `
+          <img src="${imgData.src}" alt="${imgData.alt}">
+          <button class="delete-btn" data-index="${index}">&times;</button>
+        `;
+        dislikedGrid.appendChild(div);
+      });
+
+      dislikedGrid.querySelectorAll(".delete-btn").forEach(button => {
+        button.addEventListener("click", (e) => {
+          const index = parseInt(e.target.dataset.index);
+          const dislikedImages = JSON.parse(localStorage.getItem("dislikedImages")) || [];
+          dislikedImages.splice(index, 1);
+          localStorage.setItem("dislikedImages", JSON.stringify(dislikedImages));
+          renderDislikedImages();
+        });
+      });
+    }
+
+    renderDislikedImages();
+  </script>
 </body>
-</html> 
+</html>
