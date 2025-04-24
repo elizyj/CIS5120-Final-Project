@@ -8,6 +8,24 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .post-card {
+      position: relative;
+    }
+    .post-username {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #587ddb;
+  border: 1.5px solid #587ddb;
+  border-radius: 12px;
+  padding: 3px 10px;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+  margin-bottom: 0.5rem;
+  align-self: flex-start; /* aligns to top-left of card */
+}
+  </style>
 </head>
 <body>
   <header class="app-header">
@@ -24,37 +42,37 @@
       <div class="post-card active">
         <img src="thrift1.jpg" alt="Clothing 1" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
       <div class="post-card">
         <img src="thrift2.jpg" alt="Clothing 2" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
       <div class="post-card">
         <img src="thrift3.jpg" alt="Clothing 3" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
       <div class="post-card">
         <img src="thrift4.jpg" alt="Clothing 4" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
       <div class="post-card">
         <img src="thrift5.jpg" alt="Clothing 5" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
     </div>
   </div>
@@ -90,11 +108,6 @@
   </nav>
   
   <script>
-    function navigate(destination) {
-      alert(`Navigating to ${destination} page...`);
-    }
-
-    // let currentIndex = 0;
     const cards = document.querySelectorAll('.post-card');
 
     let currentIndex = parseInt(localStorage.getItem("postIndex")) || 0;
@@ -107,9 +120,27 @@ function showCard(index) {
 }
 
     function rate(action) {
-      const imageAlt = cards[currentIndex].querySelector("img").alt;
-      if (action === "like") liked.push(imageAlt);
-      else disliked.push(imageAlt);
+      const card = cards[currentIndex];
+      const image = card.querySelector("img");
+      const imageSrc = image.getAttribute("src");
+      const imageAlt = image.getAttribute("alt");
+
+      let liked = JSON.parse(localStorage.getItem("likedImages")) || [];
+      let disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
+
+      // Remove from both lists first to prevent duplicates
+      liked = liked.filter(img => img.src !== imageSrc);
+      disliked = disliked.filter(img => img.src !== imageSrc);
+
+      if (action === "like") {
+        liked.push({ src: imageSrc, alt: imageAlt });
+      } else {
+        disliked.push({ src: imageSrc, alt: imageAlt });
+      }
+
+      localStorage.setItem("likedImages", JSON.stringify(liked));
+      localStorage.setItem("dislikedImages", JSON.stringify(disliked));
+
       currentIndex++;
       if (currentIndex < cards.length) {
         showCard(currentIndex);
