@@ -1,4 +1,3 @@
-
 .profile-scroll-box {
   width: 80%;
   max-width: 400px;
@@ -8,6 +7,7 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -16,6 +16,7 @@ body {
   overflow-y: auto;
   padding-bottom: 100px; /* prevent overlap with bottom nav */
 }
+
 .add-post-btn {
   position: fixed;
   bottom: 90px; /* just above the nav */
@@ -60,8 +61,8 @@ body {
 }
 
 .likes {
-  font-size: 1.6rem;            /* Make emoji larger */
-  color: #587ddb;               /* Make like count blue */
+  font-size: 1.6rem;
+  color: #587ddb;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -72,16 +73,14 @@ body {
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
-  color: #f8fa90;           /* yellow text */
-  background-color: #587ddb; /* blue background */
+  color: #f8fa90;
+  background-color: #587ddb;
   padding: 0.3rem 0;
   border-bottom: 1px solid #587ddb;
   margin: 1rem auto 1.5rem;
   width: 100%;
   max-width: 400px;
 }
-
-
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -89,20 +88,50 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: #fff;
+  background-color: #fcfddb;
   border-top: 1px solid #ddd;
   padding: 0.75rem 0;
   z-index: 999;
+  box-sizing: border-box;
 }
 
 .bottom-nav .nav-item {
-  font-size: 1.5rem;
-  color: white;
+  background-color: #587ddb;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
+  font-family: 'Poppins', sans-serif;
 }
 
-.bottom-nav .nav-item.active {
-  color: #587ddb;
+.bottom-nav .nav-item i {
+  font-size: 1.6rem;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.bottom-nav .nav-item.active i {
+  color: #f8fa90; /* pale yellow */
+}
+
+
+/* Header Styles */
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: #fcfddb;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .logo-image {
@@ -115,19 +144,4 @@ body {
   font-size: 1.2rem;
   font-weight: 600;
   color: #587ddb;
-}
-
-.app-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
-  background-color: white;
-  border-bottom: 1px solid #ddd;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }

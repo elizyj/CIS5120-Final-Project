@@ -247,6 +247,7 @@ body {
   .menu-bar i,
   .bottom-nav i {
    font-size: 1.6rem; /* increased from 1.5rem */
+   color: white;
    
   }
   
@@ -263,9 +264,8 @@ body {
   }
   
   
-  /* Optional: highlight active nav item */
-  .bottom-nav .nav-item.active {
-    color: #587ddb;
+  .bottom-nav .nav-item.active i {
+    color: #f8fa90; /* pale yellow for active icon */
   }
   
   

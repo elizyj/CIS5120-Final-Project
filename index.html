@@ -1,197 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ThriftTag - Daily Feed</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    .post-card {
-      position: relative;
-    }
-    .post-username {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #587ddb;
-  border: 1.5px solid #587ddb;
-  border-radius: 12px;
-  padding: 3px 10px;
-  display: inline-block;
-  font-family: 'Poppins', sans-serif;
-  background-color: white;
-  margin-bottom: 0.5rem;
-  align-self: flex-start; /* aligns to top-left of card */
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>ThriftTag - Daily Feed</title>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+ <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+ <style>
+   .post-card {
+     position: relative;
+   }
+   .post-username {
+ font-size: 0.9rem;
+ font-weight: 500;
+ color: #587ddb;
+ border: 1.5px solid #587ddb;
+ border-radius: 12px;
+ padding: 3px 10px;
+ display: inline-block;
+ font-family: 'Poppins', sans-serif;
+ background-color: white;
+ margin-bottom: 0.5rem;
+ align-self: flex-start; /* aligns to top-left of card */
 }
-  </style>
+ </style>
 </head>
 <body>
-  <header class="app-header">
-    <div class="logo">
-      <img src="./IMG_5908.jpeg" alt="ThriftTag Logo" class="logo-image" />
-      <span class="logo-text">ThriftTag</span>
-    </div>
-  </header>
-
-  <h1 class="feed-title">Daily Feed</h1>
-
-  <div class="carousel-container">
-    <div class="post-viewer" id="postViewer">
-      <div class="post-card active">
-        <img src="thrift1.jpg" alt="Clothing 1" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-      <div class="post-card">
-        <img src="thrift2.jpg" alt="Clothing 2" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-      <div class="post-card">
-        <img src="thrift3.jpg" alt="Clothing 3" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-      <div class="post-card">
-        <img src="thrift4.jpg" alt="Clothing 4" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-      <div class="post-card">
-        <img src="thrift5.jpg" alt="Clothing 5" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <button class="recommend-button">Get Recommendations!</button>
-  <div id="recommendationModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Recommended Store!</h2>
-  
-      <div class="store-info-box">
-        <p><strong>Buffalo Exchange</strong></p>
-        <p>2.7 mi · 501 South St</p>
-        <p>(207) 780-7043</p>
-        <p>Open · Closes 8PM</p>
-      </div>
-  
-    </div>
-  </div>
-  <div class="menu-bar">
-    <button onclick="navigate('home')"><i class="fas fa-house"></i></button>
-  <button onclick="navigate('liked')"><i class="fas fa-thumbs-up"></i></button>
-  <button onclick="navigate('disliked')"><i class="fas fa-thumbs-down"></i></button>
-  <button onclick="navigate('profile')"><i class="fas fa-user"></i></button>
-  </div>
+ <header class="app-header">
+   <div class="logo">
+     <img src="./IMG_5908.jpeg" alt="ThriftTag Logo" class="logo-image" />
+     <span class="logo-text">ThriftTag</span>
+   </div>
+ </header>
 
 
-  <nav class="bottom-nav">
-    <a href="./index.html" class="nav-item active"><i class="ri-home-5-fill"></i></a>
-    <a href="./liked.html" class="nav-item"><i class="ri-thumb-up-fill"></i></a>
-    <a href="./disliked.html" class="nav-item"><i class="ri-thumb-down-fill"></i></a>
-    <a href="./profile.html" class="nav-item"><i class="ri-user-3-fill"></i></a>
-  </nav>
-  
-  <script>
-    const cards = document.querySelectorAll('.post-card');
+ <h1 class="feed-title">Daily Feed</h1>
 
-    let currentIndex = parseInt(localStorage.getItem("postIndex")) || 0;
 
-function showCard(index) {
-  cards.forEach((card, i) => {
-    card.classList.remove("active");
-    if (i === index) card.classList.add("active");
-  });
-}
+ <div class="carousel-container">
+   <div class="post-viewer" id="postViewer"></div>
+ </div>
 
-    function rate(action) {
-      const card = cards[currentIndex];
-      const image = card.querySelector("img");
-      const imageSrc = image.getAttribute("src");
-      const imageAlt = image.getAttribute("alt");
 
-      let liked = JSON.parse(localStorage.getItem("likedImages")) || [];
-      let disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
+ <button class="recommend-button">Get Recommendations!</button>
 
-      // Remove from both lists first to prevent duplicates
-      liked = liked.filter(img => img.src !== imageSrc);
-      disliked = disliked.filter(img => img.src !== imageSrc);
 
-      if (action === "like") {
-        liked.push({ src: imageSrc, alt: imageAlt });
-      } else {
-        disliked.push({ src: imageSrc, alt: imageAlt });
-      }
+ <div id="recommendationModal" class="modal">
+   <div class="modal-content">
+     <span class="close" onclick="closeModal()">&times;</span>
+     <h2>Recommended Store!</h2>
+     <div class="store-info-box">
+       <p><strong>Buffalo Exchange</strong></p>
+       <p>2.7 mi · 501 South St</p>
+       <p>(207) 780-7043</p>
+       <p>Open · Closes 8PM</p>
+     </div>
+   </div>
+ </div>
 
-      localStorage.setItem("likedImages", JSON.stringify(liked));
-      localStorage.setItem("dislikedImages", JSON.stringify(disliked));
 
-      currentIndex++;
-      if (currentIndex < cards.length) {
-        showCard(currentIndex);
-      } else {
-        alert(`You're done!\nLiked: ${liked.join(", ")}\nDisliked: ${disliked.join(", ")}`);
-      }
-    }
-    document.querySelector(".recommend-button").addEventListener("click", function () {
-  document.getElementById("recommendationModal").style.display = "block";
-});
+ <nav class="bottom-nav">
+   <a href="./index.html" class="nav-item active"><i class="ri-home-5-fill"></i></a>
+   <a href="./liked.html" class="nav-item"><i class="ri-thumb-up-fill"></i></a>
+   <a href="./disliked.html" class="nav-item"><i class="ri-thumb-down-fill"></i></a>
+   <a href="./profile.html" class="nav-item"><i class="ri-user-3-fill"></i></a>
+ </nav>
 
-function closeModal() {
-  document.getElementById("recommendationModal").style.display = "none";
-}
 
-window.onclick = function (event) {
-  const modal = document.getElementById("recommendationModal");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-  const card = cards[currentIndex];
-  const image = card.querySelector("img");
-  const imageSrc = image.getAttribute("src");
-  const imageAlt = image.getAttribute("alt");
+ <script>
+   const postViewer = document.getElementById("postViewer");
 
-  const liked = JSON.parse(localStorage.getItem("likedImages")) || [];
-  const disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
 
-  if (action === "like") {
-    liked.push({ src: imageSrc, alt: imageAlt });
-    localStorage.setItem("likedImages", JSON.stringify(liked));
-  } else {
-    disliked.push({ src: imageSrc, alt: imageAlt });
-    localStorage.setItem("dislikedImages", JSON.stringify(disliked));
-  }
+   const usernames = [
+     "@thriftQueen", "@vintageHunter", "@styleSage", "@retroFinds", "@wearitagain", "@urbanThrift", "@closetCrush",
+     "@ecochic", "@fleaMarketFan", "@greenThreads", "@swapStar", "@fashionLoop", "@renewStyle", "@outfitCycle",
+     "@prelovedGems", "@reuseMuse", "@thriftScout", "@wardrobeWanderer", "@chicReclaim", "@upcycleIcon",
+     "@throwbackThreads", "@findersKeepers", "@pastPerfect", "@onceAgainFits", "@sustainStyle",
+     "@grannycore", "@rethreaded", "@retroRider", "@relovedCloset", "@ecothreads", "@timelessFinds"
+   ];
 
-  currentIndex++;
-  localStorage.setItem("postIndex", currentIndex); // ✅ Save the index
 
-  if (currentIndex < cards.length) {
-    showCard(currentIndex);
-  } else {
-    alert("You're done! View your liked/disliked items via the menu.");
-localStorage.setItem("postIndex", 0); // ✅ Reset to first post
-currentIndex = 0;
-showCard(currentIndex);
-  }
+   for (let i = 1; i <= 31; i++) {
+     const card = document.createElement("div");
+     card.classList.add("post-card");
+     if (i === 1) card.classList.add("active");
 
-showCard(currentIndex);
-  </script>
 
+     const usernames = [
+ "@swapStar", "@vintageQueen", "@thriftKing", "@retroMood", "@wardrobeWiz",
+ "@urbanGem", "@modaMuse", "@sustainablyChic", "@ecoThreads", "@closetFinds",
+ "@thriftFlow", "@styleStash", "@trendTrove", "@findsAndFits", "@chicCycle",
+ "@throwbackFits", "@gentlyWorn", "@secondChanceStyle", "@reclaimedGlam", "@upcycleMe",
+ "@styleReboot", "@coolCloset", "@wearAgain", "@pastPerfect", "@revampRunway",
+ "@rebootRack", "@fitFlip", "@thriftTrove", "@rewearable", "@vintageGlow", "@preLoved"
+];
+
+
+card.innerHTML = `
+ <div class="post-username">${usernames[i - 1]}</div>
+ <img src="thrift${i}.png" alt="Clothing ${i}" />
+ <div class="like-buttons">
+   <button class="btn-like" onclick="rate('like')">👍</button>
+   <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+ </div>
+`;
+     postViewer.appendChild(card);
+   }
+
+
+   const cards = document.querySelectorAll('.post-card');
+   let currentIndex = parseInt(localStorage.getItem("postIndex")) || 0;
+
+
+   function showCard(index) {
+     cards.forEach((card, i) => {
+       card.classList.remove("active");
+       if (i === index) card.classList.add("active");
+     });
+   }
+
+
+   function rate(action) {
+     const card = cards[currentIndex];
+     const image = card.querySelector("img");
+     const imageSrc = image.getAttribute("src");
+     const imageAlt = image.getAttribute("alt");
+
+
+     let liked = JSON.parse(localStorage.getItem("likedImages")) || [];
+     let disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
+
+
+     liked = liked.filter(img => img.src !== imageSrc);
+     disliked = disliked.filter(img => img.src !== imageSrc);
+
+
+     if (action === "like") {
+       liked.push({ src: imageSrc, alt: imageAlt });
+     } else {
+       disliked.push({ src: imageSrc, alt: imageAlt });
+     }
+
+
+     localStorage.setItem("likedImages", JSON.stringify(liked));
+     localStorage.setItem("dislikedImages", JSON.stringify(disliked));
+
+
+     currentIndex++;
+     if (currentIndex < cards.length) {
+       localStorage.setItem("postIndex", currentIndex);
+       showCard(currentIndex);
+     } else {
+       alert("You're done! View your liked/disliked items via the menu.");
+       currentIndex = 0;
+       localStorage.setItem("postIndex", 0);
+       showCard(currentIndex);
+     }
+   }
+
+
+   function closeModal() {
+     document.getElementById("recommendationModal").style.display = "none";
+   }
+
+
+   document.querySelector(".recommend-button").addEventListener("click", () => {
+     document.getElementById("recommendationModal").style.display = "block";
+   });
+
+
+   window.onclick = function (event) {
+     const modal = document.getElementById("recommendationModal");
+     if (event.target == modal) {
+       modal.style.display = "none";
+     }
+   };
+
+
+   document.addEventListener("DOMContentLoaded", () => {
+     showCard(currentIndex);
+   });
+ </script>
 </body>
 </html>
