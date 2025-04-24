@@ -8,6 +8,24 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .post-card {
+      position: relative;
+    }
+    .post-username {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #587ddb;
+  border: 1.5px solid #587ddb;
+  border-radius: 12px;
+  padding: 3px 10px;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+  margin-bottom: 0.5rem;
+  align-self: flex-start; /* aligns to top-left of card */
+}
+  </style>
 </head>
 <body>
   <header class="app-header">
@@ -48,19 +66,36 @@
   <script>
     const postViewer = document.getElementById("postViewer");
 
-    // Dynamically add 31 post cards
+    const usernames = [
+      "@thriftQueen", "@vintageHunter", "@styleSage", "@retroFinds", "@wearitagain", "@urbanThrift", "@closetCrush",
+      "@ecochic", "@fleaMarketFan", "@greenThreads", "@swapStar", "@fashionLoop", "@renewStyle", "@outfitCycle",
+      "@prelovedGems", "@reuseMuse", "@thriftScout", "@wardrobeWanderer", "@chicReclaim", "@upcycleIcon",
+      "@throwbackThreads", "@findersKeepers", "@pastPerfect", "@onceAgainFits", "@sustainStyle",
+      "@grannycore", "@rethreaded", "@retroRider", "@relovedCloset", "@ecothreads", "@timelessFinds"
+    ];
+
     for (let i = 1; i <= 31; i++) {
       const card = document.createElement("div");
       card.classList.add("post-card");
       if (i === 1) card.classList.add("active");
 
-      card.innerHTML = `
-        <img src="thrift${i}.png" alt="Clothing ${i}" />
-        <div class="like-buttons">
-          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-          <button class="btn-like" onclick="rate('like')">👍</button>
-        </div>
-      `;
+      const usernames = [
+  "@swapStar", "@vintageQueen", "@thriftKing", "@retroMood", "@wardrobeWiz",
+  "@urbanGem", "@modaMuse", "@sustainablyChic", "@ecoThreads", "@closetFinds",
+  "@thriftFlow", "@styleStash", "@trendTrove", "@findsAndFits", "@chicCycle",
+  "@throwbackFits", "@gentlyWorn", "@secondChanceStyle", "@reclaimedGlam", "@upcycleMe",
+  "@styleReboot", "@coolCloset", "@wearAgain", "@pastPerfect", "@revampRunway",
+  "@rebootRack", "@fitFlip", "@thriftTrove", "@rewearable", "@vintageGlow", "@preLoved"
+];
+
+card.innerHTML = `
+  <div class="post-username">${usernames[i - 1]}</div>
+  <img src="thrift${i}.png" alt="Clothing ${i}" />
+  <div class="like-buttons">
+    <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+    <button class="btn-like" onclick="rate('like')">👍</button>
+  </div>
+`;
       postViewer.appendChild(card);
     }
 
@@ -83,7 +118,6 @@
       let liked = JSON.parse(localStorage.getItem("likedImages")) || [];
       let disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
 
-      // Remove from both arrays to prevent duplicates
       liked = liked.filter(img => img.src !== imageSrc);
       disliked = disliked.filter(img => img.src !== imageSrc);
 
