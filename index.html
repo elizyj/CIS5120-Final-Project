@@ -24,64 +24,55 @@
       <div class="post-card active">
         <img src="thrift1.jpg" alt="Clothing 1" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
       <div class="post-card">
         <img src="thrift2.jpg" alt="Clothing 2" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
       <div class="post-card">
         <img src="thrift3.jpg" alt="Clothing 3" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
       <div class="post-card">
         <img src="thrift4.jpg" alt="Clothing 4" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
       <div class="post-card">
         <img src="thrift5.jpg" alt="Clothing 5" />
         <div class="like-buttons">
-            <button class="btn-dislike" onclick="rate('dislike')">👎</button>
-            <button class="btn-like" onclick="rate('like')">👍</button>
-          </div>
+          <button class="btn-dislike" onclick="rate('dislike')">👎</button>
+          <button class="btn-like" onclick="rate('like')">👍</button>
+        </div>
       </div>
     </div>
   </div>
 
   <button class="recommend-button">Get Recommendations!</button>
+
   <div id="recommendationModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
       <h2>Recommended Store!</h2>
-  
       <div class="store-info-box">
         <p><strong>Buffalo Exchange</strong></p>
         <p>2.7 mi · 501 South St</p>
         <p>(207) 780-7043</p>
         <p>Open · Closes 8PM</p>
       </div>
-  
     </div>
   </div>
-  <div class="menu-bar">
-    <button onclick="navigate('home')"><i class="fas fa-house"></i></button>
-  <button onclick="navigate('liked')"><i class="fas fa-thumbs-up"></i></button>
-  <button onclick="navigate('disliked')"><i class="fas fa-thumbs-down"></i></button>
-  <button onclick="navigate('profile')"><i class="fas fa-user"></i></button>
-  </div>
-
-  <button class="recommend-button">Get Recommendations</button>
 
   <nav class="bottom-nav">
     <a href="./index.html" class="nav-item active"><i class="ri-home-5-fill"></i></a>
@@ -89,81 +80,70 @@
     <a href="./disliked.html" class="nav-item"><i class="ri-thumb-down-fill"></i></a>
     <a href="./profile.html" class="nav-item"><i class="ri-user-3-fill"></i></a>
   </nav>
-  
+
   <script>
-    function navigate(destination) {
-      alert(`Navigating to ${destination} page...`);
-    }
-
-    // let currentIndex = 0;
     const cards = document.querySelectorAll('.post-card');
-    const liked = [];
-    const disliked = [];
-
     let currentIndex = parseInt(localStorage.getItem("postIndex")) || 0;
 
-function showCard(index) {
-  cards.forEach((card, i) => {
-    card.classList.remove("active");
-    if (i === index) card.classList.add("active");
-  });
-}
+    function showCard(index) {
+      cards.forEach((card, i) => {
+        card.classList.remove("active");
+        if (i === index) card.classList.add("active");
+      });
+    }
 
     function rate(action) {
-      const imageAlt = cards[currentIndex].querySelector("img").alt;
-      if (action === "like") liked.push(imageAlt);
-      else disliked.push(imageAlt);
+      const card = cards[currentIndex];
+      const image = card.querySelector("img");
+      const imageSrc = image.getAttribute("src");
+      const imageAlt = image.getAttribute("alt");
+
+      let liked = JSON.parse(localStorage.getItem("likedImages")) || [];
+      let disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
+
+      // Remove from both lists first to prevent duplicates
+      liked = liked.filter(img => img.src !== imageSrc);
+      disliked = disliked.filter(img => img.src !== imageSrc);
+
+      if (action === "like") {
+        liked.push({ src: imageSrc, alt: imageAlt });
+      } else {
+        disliked.push({ src: imageSrc, alt: imageAlt });
+      }
+
+      localStorage.setItem("likedImages", JSON.stringify(liked));
+      localStorage.setItem("dislikedImages", JSON.stringify(disliked));
+
       currentIndex++;
       if (currentIndex < cards.length) {
+        localStorage.setItem("postIndex", currentIndex);
         showCard(currentIndex);
       } else {
-        alert(`You're done!\nLiked: ${liked.join(", ")}\nDisliked: ${disliked.join(", ")}`);
+        alert("You're done! View your liked/disliked items via the menu.");
+        currentIndex = 0;
+        localStorage.setItem("postIndex", 0);
+        showCard(currentIndex);
       }
     }
-    document.querySelector(".recommend-button").addEventListener("click", function () {
-  document.getElementById("recommendationModal").style.display = "block";
-});
 
-function closeModal() {
-  document.getElementById("recommendationModal").style.display = "none";
-}
+    function closeModal() {
+      document.getElementById("recommendationModal").style.display = "none";
+    }
 
-window.onclick = function (event) {
-  const modal = document.getElementById("recommendationModal");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-  const card = cards[currentIndex];
-  const image = card.querySelector("img");
-  const imageSrc = image.getAttribute("src");
-  const imageAlt = image.getAttribute("alt");
+    document.querySelector(".recommend-button").addEventListener("click", () => {
+      document.getElementById("recommendationModal").style.display = "block";
+    });
 
-  const liked = JSON.parse(localStorage.getItem("likedImages")) || [];
-  const disliked = JSON.parse(localStorage.getItem("dislikedImages")) || [];
+    window.onclick = function (event) {
+      const modal = document.getElementById("recommendationModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
 
-  if (action === "like") {
-    liked.push({ src: imageSrc, alt: imageAlt });
-    localStorage.setItem("likedImages", JSON.stringify(liked));
-  } else {
-    disliked.push({ src: imageSrc, alt: imageAlt });
-    localStorage.setItem("dislikedImages", JSON.stringify(disliked));
-  }
-
-  currentIndex++;
-  localStorage.setItem("postIndex", currentIndex); // ✅ Save the index
-
-  if (currentIndex < cards.length) {
-    showCard(currentIndex);
-  } else {
-    alert("You're done! View your liked/disliked items via the menu.");
-localStorage.setItem("postIndex", 0); // ✅ Reset to first post
-currentIndex = 0;
-showCard(currentIndex);
-  }
-}
-showCard(currentIndex);
+    document.addEventListener("DOMContentLoaded", () => {
+      showCard(currentIndex);
+    });
   </script>
-
 </body>
 </html>

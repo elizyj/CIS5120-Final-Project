@@ -1,446 +1,450 @@
 /* General Layout */
 body {
-<<<<<<< HEAD
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #f9f9f9;
-  overflow-x: hidden;
-}
-
-/* Header */
-.app-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
-  background-color: white;
-  border-bottom: 1px solid #ddd;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logo-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.logo-text {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-/* Feed Title */
-.feed-title {
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #333;
-  margin: 1rem 0 0.5rem;
-  background: white;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #eee;
-}
-
-/* Post Carousel */
-.carousel-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0;
-}
-
-.post-viewer {
-  width: 80%;
-  max-width: 400px;
-}
-
-.post-card {
-  display: none;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  flex-direction: column;
-  align-items: center;
-  transition: opacity 0.3s ease;
-  width: 100%;
-  height: 650px; /* uniform card height */
-  box-sizing: border-box;
-}
-
-.post-card.active {
-  display: flex;
-}
-
-.post-card img {
-  width: 100%;
-  height: 550px; /* uniform image height */
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-}
-
-/* Like/Dislike Buttons with Emojis */
-.like-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
-}
-
-.btn-like,
-=======
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
-    overflow-x: hidden;
+   margin: 0;
+   font-family: 'Poppins', sans-serif;
+   background-color: #f9f9f9;
+   overflow-x: hidden;
   }
+  
   
   /* Header */
   .app-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    background-color: white;
-    border-bottom: 1px solid #ddd;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 1rem 0;
+   background-color: white;
+   border-bottom: 1px solid #ddd;
   }
-  .menu-bar i {
-    font-size: 1.8rem;
-    color: #587ddb;
-  }
+  
+  
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
   }
+  
   
   .logo-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
   }
   
+  
   .logo-text {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #587ddb;
+   font-size: 1.2rem;
+   font-weight: 600;
   }
+  
   
   /* Feed Title */
   .feed-title {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #f8fa90;
-    margin: 1rem 0 0.25rem;
-    background: #587ddb; /* blue background */
-    padding: 0.3rem 0;
-    border-bottom: 1px solid #587ddb;
+   text-align: center;
+   font-size: 1.5rem;
+   font-weight: 500;
+   color: #333;
+   margin: 1rem 0 0.5rem;
+   background: white;
+   padding: 0.5rem 0;
+   border-bottom: 1px solid #eee;
   }
+  
   
   /* Post Carousel */
   .carousel-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1.3rem 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 2rem 0;
   }
+  
   
   .post-viewer {
-    width: 80%;
-    max-width: 400px;
+   width: 80%;
+   max-width: 400px;
   }
+  
   
   .post-card {
-    display: none;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    flex-direction: column;
-    align-items: center;
-    transition: opacity 0.3s ease;
-    width: 100%;
-    height: 650px; /* uniform card height */
-    box-sizing: border-box;
+   display: none;
+   background: white;
+   border-radius: 16px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   padding: 1rem;
+   flex-direction: column;
+   align-items: center;
+   transition: opacity 0.3s ease;
+   width: 100%;
+   height: 650px; /* uniform card height */
+   box-sizing: border-box;
   }
+  
   
   .post-card.active {
-    display: flex;
+   display: flex;
   }
   
+  
   .post-card img {
-    width: 100% !important;
-    height: 550px !important;
-    min-height: 500px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    display: block;
+   width: 100%;
+   height: 550px; /* uniform image height */
+   object-fit: cover;
+   border-radius: 12px;
+   margin-bottom: 1rem;
   }
+  
   
   /* Like/Dislike Buttons with Emojis */
   .like-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 100%;
+   display: flex;
+   justify-content: space-between;
+   gap: 1rem;
+   width: 100%;
   }
   
-  .btn-like,
->>>>>>> d6566a3cdb3017ca374bbebcc7c4123c933df19a
-.btn-dislike {
-  flex: 1;
-  font-size: 3.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0rem;
-  border-radius: 10px;
-  transition: background 0.2s ease;
-}
-<<<<<<< HEAD
+  
+  .btn-like {
+     margin: 0;
+     font-family: 'Poppins', sans-serif;
+     background-color: #f9f9f9;
+     overflow-x: hidden;
+   }
+    /* Header */
+   .app-header {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 1rem 0;
+     background-color: white;
+     border-bottom: 1px solid #ddd;
+   }
+   .menu-bar i {
+     font-size: 1.8rem;
+     color: #587ddb;
+   }
+   .logo {
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+   }
+    .logo-image {
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+   }
+    .logo-text {
+     font-size: 1.2rem;
+     font-weight: 600;
+     color: #587ddb;
+   }
+    /* Feed Title */
+   .feed-title {
+     text-align: center;
+     font-size: 1.5rem;
+     font-weight: 500;
+     color: #f8fa90;
+     margin: 1rem 0 0.25rem;
+     background: #587ddb; /* blue background */
+     padding: 0.3rem 0;
+     border-bottom: 1px solid #587ddb;
+   }
+    /* Post Carousel */
+   .carousel-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 1.3rem 0;
+   }
+    .post-viewer {
+     width: 80%;
+     max-width: 400px;
+   }
+    .post-card {
+     display: none;
+     background: white;
+     border-radius: 16px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     padding: 1rem;
+     flex-direction: column;
+     align-items: center;
+     transition: opacity 0.3s ease;
+     width: 100%;
+     height: 650px; /* uniform card height */
+     box-sizing: border-box;
+   }
+    .post-card.active {
+     display: flex;
+   }
+    .post-card img {
+     width: 100% !important;
+     height: 550px !important;
+     min-height: 500px;
+     object-fit: cover;
+     border-radius: 12px;
+     margin-bottom: 1rem;
+     display: block;
+   }
+    /* Like/Dislike Buttons with Emojis */
+   .like-buttons {
+     display: flex;
+     justify-content: space-between;
+     gap: 1rem;
+     width: 100%;
+   }
+    .btn-like,
+  .btn-dislike {
+   flex: 1;
+   font-size: 3.5rem;
+   background: none;
+   border: none;
+   cursor: pointer;
+   padding: 0rem;
+   border-radius: 10px;
+  }
 
-.btn-like:hover {
-  background-color: #e6f4ea;
-}
-
-.btn-dislike:hover {
-  background-color: #fce8e6;
-}
-
-/* Recommend Button */
-.recommend-button {
-  display: block;
-  margin: 0 auto 6rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-/* Fixed Bottom Menu Bar */
-.menu-bar,
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-  padding: 0.75rem 0;
-  z-index: 999;
-}
-
-.menu-bar i,
-.bottom-nav i {
-  font-size: 1.6rem; /* increased from 1.5rem */
-}
-
-.menu-bar button,
-.bottom-nav .nav-item {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Optional: highlight active nav item */
-.bottom-nav .nav-item.active {
-  color: #007bff;
-}
-
-/* Prevent content from hiding behind nav */
-.profile-container,
-.photo-grid,
-.liked-grid,
-.disliked-grid {
-  padding-bottom: 80px; /* room for the fixed nav bar */
-}
-
-.liked-grid, .disliked-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* changed from 4 to 2 */
-  gap: 6px; /* slightly more spacing looks nicer in 2-column format */
-  padding: 8px;
-  margin-bottom: 80px;
-}
-
-.grid-item {
-  width: 100%;
-}
-
-.grid-item img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 4px;
-  display: block;
-}
-
-.delete-btn {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  line-height: 18px;
-  text-align: center;
-}
-
-.delete-btn:hover {
-  background-color: red;
-}
-
-.grid-item {
-  position: relative; /* This is critical for the delete-btn to be positioned inside */
-}
-
-.profile-title {
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 1rem 0;
-  color: #333;
-}
-
-.centered-content-box {
-  width: 80%;
-  max-width: 400px;
-  margin: 2rem auto;
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 650px;
-  overflow: hidden; /* hide overflow outside the box */
-}
-
-.scrollable-grid {
-  flex-grow: 1;
-  overflow-y: auto;
-  width: 100%;
-}
-=======
+  
   
   .btn-like:hover {
-    background-color: #e6f4ea;
+   background-color: #e6f4ea;
   }
   
+  
   .btn-dislike:hover {
-    background-color: #fce8e6;
+   background-color: #fce8e6;
   }
+  
   
   /* Recommend Button */
   .recommend-button {
-    display: block;
-    margin: 0 auto 5.2rem;
-    padding: 0.5rem 1rem; /* more in line with other buttons */
-    background-color: #587ddb;
-    color: #f8fa90;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    min-width: 405px;
-    font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif; /* explicitly match */
-    font-weight: 400; /* match regular text weight */
+   display: block;
+   margin: 0 auto 6rem;
+   padding: 0.75rem 1.5rem;
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 10px;
+   cursor: pointer;
+   font-size: 1rem;
   }
   
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
   
-  .modal-content {
-    position: relative;
-    background-color: white;
-    margin: 15% auto;
-    padding: 2rem;
-    color: #587ddb;
-    border: 1px solid #ccc;
-    width: 50%;
-    max-width: 400px;
-    border-radius: 12px;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-  }
-  .store-info-box {
-    background-color: #587ddb; /* blue */
-    color: #f8fa90; /* yellow text */
-    padding: 1rem;
-    border-radius: 12px;
-    margin-top: 1rem;
-  }
-  
-  .store-info-box p {
-    margin: 0.5rem 0;
-  }
-  .close {
-    position: absolute;
-    top: 5px;      /* move it upward */
-    right: 16px;    /* move it rightward */
-    color: #8e1600;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    background: none;
-    border: none;
-  }
-  .close:hover {
-    color: black;
-  }
   /* Fixed Bottom Menu Bar */
-  .menu-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-    padding: 0.75rem 0;
-    z-index: 999;
+  .menu-bar,
+  .bottom-nav {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   display: flex;
+   justify-content: space-around;
+   background-color: #fff;
+   border-top: 1px solid #ddd;
+   padding: 0.75rem 0;
+   z-index: 999;
   }
   
-  .menu-bar button {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
+  
+  .menu-bar i,
+  .bottom-nav i {
+   font-size: 1.6rem; /* increased from 1.5rem */
   }
   
->>>>>>> d6566a3cdb3017ca374bbebcc7c4123c933df19a
+  
+  .menu-bar button,
+  .bottom-nav .nav-item {
+   background: none;
+   border: none;
+   font-size: 1rem;
+   cursor: pointer;
+   font-family: 'Poppins', sans-serif;
+   text-decoration: none;
+   color: inherit;
+  }
+  
+  
+  /* Optional: highlight active nav item */
+  .bottom-nav .nav-item.active {
+   color: #007bff;
+  }
+  
+  
+  /* Prevent content from hiding behind nav */
+  .profile-container,
+  .photo-grid,
+  .liked-grid,
+  .disliked-grid {
+   padding-bottom: 80px; /* room for the fixed nav bar */
+  }
+  
+  
+  .liked-grid, .disliked-grid {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr); /* changed from 4 to 2 */
+   gap: 6px; /* slightly more spacing looks nicer in 2-column format */
+   padding: 8px;
+   margin-bottom: 80px;
+  }
+  
+  
+  .grid-item {
+   width: 100%;
+  }
+  
+  
+  .grid-item img {
+   width: 100%;
+   aspect-ratio: 1 / 1;
+   object-fit: cover;
+   border-radius: 4px;
+   display: block;
+  }
+  
+  
+  .delete-btn {
+   position: absolute;
+   top: 4px;
+   right: 4px;
+   background-color: rgba(0, 0, 0, 0.6);
+   color: white;
+   border: none;
+   border-radius: 50%;
+   width: 20px;
+   height: 20px;
+   font-size: 14px;
+   cursor: pointer;
+   line-height: 18px;
+   text-align: center;
+  }
+  
+  
+  .delete-btn:hover {
+   background-color: red;
+  }
+  
+  
+  .grid-item {
+   position: relative; /* This is critical for the delete-btn to be positioned inside */
+  }
+  
+  
+  .profile-title {
+   text-align: center;
+   font-size: 1.5rem;
+   font-weight: 600;
+   margin: 1rem 0;
+   color: #333;
+  }
+  
+  
+  .centered-content-box {
+   width: 80%;
+   max-width: 400px;
+   margin: 2rem auto;
+   background-color: white;
+   border-radius: 16px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   padding: 1rem;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 650px;
+   overflow: hidden; /* hide overflow outside the box */
+  }
+  
+  
+  .scrollable-grid {
+   flex-grow: 1;
+   overflow-y: auto;
+   width: 100%;
+  }
+    .btn-like:hover {
+     background-color: #e6f4ea;
+   }
+    .btn-dislike:hover {
+     background-color: #fce8e6;
+   }
+    /* Recommend Button */
+   .recommend-button {
+     display: block;
+     margin: 0 auto 5.2rem;
+     padding: 0.5rem 1rem; /* more in line with other buttons */
+     background-color: #587ddb;
+     color: #f8fa90;
+     border: none;
+     border-radius: 10px;
+     cursor: pointer;
+     min-width: 405px;
+     font-size: 1.2rem;
+     font-family: 'Poppins', sans-serif; /* explicitly match */
+     font-weight: 400; /* match regular text weight */
+   }
+    .modal {
+     display: none;
+     position: fixed;
+     z-index: 9999;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     overflow: auto;
+     background-color: rgba(0, 0, 0, 0.4);
+   }
+    .modal-content {
+     position: relative;
+     background-color: white;
+     margin: 15% auto;
+     padding: 2rem;
+     color: #587ddb;
+     border: 1px solid #ccc;
+     width: 50%;
+     max-width: 400px;
+     border-radius: 12px;
+     font-family: 'Poppins', sans-serif;
+     text-align: center;
+   }
+   .store-info-box {
+     background-color: #587ddb; /* blue */
+     color: #f8fa90; /* yellow text */
+     padding: 1rem;
+     border-radius: 12px;
+     margin-top: 1rem;
+   }
+    .store-info-box p {
+     margin: 0.5rem 0;
+   }
+   .close {
+     position: absolute;
+     top: 5px;      /* move it upward */
+     right: 16px;    /* move it rightward */
+     color: #8e1600;
+     font-size: 28px;
+     font-weight: bold;
+     cursor: pointer;
+     background: none;
+     border: none;
+   }
+   .close:hover {
+     color: black;
+   }
+   /* Fixed Bottom Menu Bar */
+   .menu-bar {
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     display: flex;
+     justify-content: space-around;
+     background-color: #fff;
+     border-top: 1px solid #ddd;
+     padding: 0.75rem 0;
+     z-index: 999;
+   }
+    .menu-bar button {
+     background: none;
+     border: none;
+     font-size: 1rem;
+     cursor: pointer;
+     font-family: 'Poppins', sans-serif;
+   }
